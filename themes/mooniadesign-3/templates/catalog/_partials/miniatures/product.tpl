@@ -88,16 +88,12 @@
             {/if}
 
             {block name='product_chips'}
-              {if !empty($product.attributes)}
+              {if !empty($product.features)}
                 <div class="{$componentName}__chips">
-                  {if is_string($product.attributes)}
-                    <span class="{$componentName}__chip {$componentName}__chip--attribute" title="{$product.attributes}">{$product.attributes}</span>
-                  {else}
-                    {foreach from=$product.attributes item=attr name=attrs}
-                      {if $smarty.foreach.attrs.iteration > 4}{break}{/if}
-                      <span class="{$componentName}__chip {$componentName}__chip--attribute" title="{if isset($attr.name)}{$attr.name}{else}{$attr}{/if}">{if isset($attr.name)}{$attr.name}{else}{$attr}{/if}</span>
-                    {/foreach}
-                  {/if}
+                  {foreach from=$product.features item=feature name=features}
+                    {if $smarty.foreach.features.iteration > 4}{break}{/if}
+                    <span class="{$componentName}__chip" title="{$feature.name}: {$feature.value}"><strong>{$feature.name}:</strong> {$feature.value}</span>
+                  {/foreach}
                 </div>
               {/if}
             {/block}
