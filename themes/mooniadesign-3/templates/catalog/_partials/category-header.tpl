@@ -28,9 +28,10 @@
         </div>
       {/if}
 
-      {include file='components/page-title-section.tpl' title=$category.name}
+      <div class="category__header-body">
+        {include file='components/page-title-section.tpl' title=$category.name}
 
-      {if $category.description}
+        {if $category.description}
         <div class="category__description-wrapper">
           <input type="checkbox" class="category__description-toggle" id="category-description-toggle" aria-hidden="true">
           <div class="category__description rich-text" id="category-description">{$category.description nofilter}</div>
@@ -40,7 +41,8 @@
             {include file="_partials/icons/chevron-down.tpl" size=16}
           </label>
         </div>
-      {/if}
+        {/if}
+      </div>
 
       {if isset($subcategories) && $subcategories|@count > 0}
         {include file='catalog/_partials/subcategories.tpl' subcategories=$subcategories}

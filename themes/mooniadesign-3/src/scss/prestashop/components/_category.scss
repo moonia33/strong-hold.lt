@@ -63,3 +63,27 @@
     }
   }
 }
+
+// Category header layout: full-width cover, bordered body block, clear gap to products
+.category__header {
+  margin-block-end: 2.5rem;
+}
+
+.category__cover {
+  margin-block-end: 1rem;
+  overflow: hidden;
+  border-radius: var(--bs-border-radius);
+
+  &-image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.category__header-body {
+  padding: 1.25rem 1.5rem;
+  background-color: var(--bs-body-bg);
+  border: 1px solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+}
