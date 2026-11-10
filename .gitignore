@@ -65,3 +65,6 @@ Thumbs.db
 .vscode/
 *.swp
 *~
+
+# PrestaShop CCC cache
+/themes/*/assets/cache/

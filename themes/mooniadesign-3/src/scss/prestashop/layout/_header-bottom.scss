@@ -52,3 +52,21 @@ $component-name: site-header;
     justify-content: flex-start;
   }
 }
+
+// Menu row ordering: menu | search | cart (desktop)
+@include media-breakpoint-up(md) {
+  .header-menu {
+    .ps-mainmenu {
+      order: 1;
+    }
+
+    #_desktop_ps_searchbar {
+      order: 2;
+      margin-inline-start: auto;
+    }
+
+    #_desktop_ps_shoppingcart {
+      order: 3;
+    }
+  }
+}
