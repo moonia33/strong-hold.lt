@@ -12,4 +12,9 @@
   --md-color-accent-hover: #{$accent-hover};
   --md-color-accent-rgb: #{red($accent)}, #{green($accent)}, #{blue($accent)};
   --md-color-danger: #{$danger};
+
+  // Green reserved for the product-page "Add to cart" CTA
+  --md-color-cart: #{$green};
+  --md-color-cart-hover: #{$green-dark};
+  --md-color-cart-rgb: #{red($green)}, #{green($green)}, #{blue($green)};
 }

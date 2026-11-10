@@ -18,6 +18,10 @@
   white-space: nowrap;
   background-color: var(--bs-tertiary-bg);
   border-radius: 0.25rem;
+
+  strong {
+    font-weight: 600;
+  }
 }
 
 // Attribute chips (combinations) — subtle accent tint vs. neutral features
@@ -53,8 +57,8 @@
 
 // Full-width "view details" button like the reference card
 .product-miniature__details {
-  width: 100%;
   justify-content: center;
+  width: 100%;
 }
 
 // Reference card v2: larger title & price; chips stay as muted pills
@@ -74,8 +78,3 @@
   }
 }
 
-.product-miniature__chip {
-  strong {
-    font-weight: 600;
-  }
-}

@@ -26,3 +26,15 @@ $component-name: details;
     font-weight: 700;
   }
 }
+
+// Product-page "Add to cart" keeps the green CTA (accent is orange)
+.product__add-to-cart-button.btn-primary {
+  --bs-btn-bg: var(--md-color-cart);
+  --bs-btn-border-color: var(--md-color-cart);
+  --bs-btn-hover-bg: var(--md-color-cart-hover);
+  --bs-btn-hover-border-color: var(--md-color-cart-hover);
+  --bs-btn-active-bg: var(--md-color-cart-hover);
+  --bs-btn-active-border-color: var(--md-color-cart-hover);
+  --bs-btn-disabled-bg: var(--md-color-cart);
+  --bs-btn-disabled-border-color: var(--md-color-cart);
+}

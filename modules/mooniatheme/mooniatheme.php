@@ -18,17 +18,17 @@ class Mooniatheme extends Module
     protected const COLORS = [
         'MOONIATHEME_PRIMARY' => [
             'var' => '--md-color-primary',
-            'default' => '#111111',
+            'default' => '#111',
             'label' => 'Pagrindinė spalva',
         ],
         'MOONIATHEME_ACCENT' => [
             'var' => '--md-color-accent',
-            'default' => '#1b4332',
+            'default' => '#ff6a00',
             'label' => 'Akcentinė spalva (mygtukai)',
         ],
         'MOONIATHEME_ACCENT_HOVER' => [
             'var' => '--md-color-accent-hover',
-            'default' => '#12291d',
+            'default' => '#e65a00',
             'label' => 'Akcentinė spalva (hover)',
         ],
         'MOONIATHEME_DANGER' => [

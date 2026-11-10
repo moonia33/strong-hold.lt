@@ -12,14 +12,16 @@ $grid-breakpoints: (
 );
 
 // Colors
-// Moonia Design palette: dominant black, dark-green accent for CTAs, red warnings.
+// Moonia Design palette: dominant black, orange accent (AliStyle), green cart CTA, red warnings.
 $ink: #111;
-$green: #1b4332;
+$green: #2f8f5b;
+$orange: #ff6a00;
+$orange-hover: #e65a00;
 $green-dark: #12291d;
 $red: #d32f2f;
 $primary: $ink;
-$accent: $green;
-$accent-hover: $green-dark;
+$accent: $orange;
+$accent-hover: $orange-hover;
 $primary-text-emphasis: $primary;
 $danger: $red;
 $warning: $red;
@@ -58,3 +60,6 @@ $enable-cssgrid: true;
 // Color mode
 // Uncomment the line below to enable dark mode based on media query
 // $color-mode-type: media-query;
+
+// Warm off-white page background; card/block surfaces stay white
+$body-bg: #faf8f6;
