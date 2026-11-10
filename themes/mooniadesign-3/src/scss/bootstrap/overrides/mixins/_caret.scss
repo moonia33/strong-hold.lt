@@ -1,0 +1,39 @@
+$caret-icons: (
+  down: $icon-chevron-down,
+  up: $icon-chevron-up,
+  end: $icon-chevron-right,
+  start: $icon-chevron-left,
+);
+
+@mixin caret(
+  $direction: down,
+  $width: $caret-width,
+  $spacing: $caret-spacing,
+  $vertical-align: $caret-vertical-align
+) {
+  @if $enable-caret {
+    &::after {
+      @include icon-mask(map-get($caret-icons, $direction), $width);
+      margin: 0;
+      vertical-align: $vertical-align;
+      border: none;
+    }
+
+    @if $direction == start {
+      &::after {
+        display: none;
+      }
+
+      &::before {
+        @include icon-mask(map-get($caret-icons, $direction), $width);
+        margin: 0;
+        vertical-align: $vertical-align;
+        border: none;
+      }
+    }
+
+    &:empty::after {
+      margin-left: 0;
+    }
+  }
+}

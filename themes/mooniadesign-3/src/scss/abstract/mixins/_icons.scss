@@ -1,0 +1,14 @@
+// Renders a Lucide SVG icon as a CSS mask (inherits color from currentColor).
+// Icon data-URIs live in abstract/variables/_icons.scss (generated file).
+@mixin icon-mask($icon, $size: 1em, $color: currentColor) {
+  display: inline-block;
+  width: $size;
+  height: $size;
+  vertical-align: -0.125em;
+  content: "";
+  background-color: $color;
+  mask-image: $icon;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+}

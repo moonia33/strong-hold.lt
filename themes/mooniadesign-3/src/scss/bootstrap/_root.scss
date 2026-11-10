@@ -1,0 +1,15 @@
+// Add Custom Bootstrap CSS Variables
+:root {
+  --#{$prefix}transition-default: #{$transition-base};
+  --#{$prefix}box-shadow-md: #{$box-shadow-md};
+
+  // Moonia Design semantic color tokens.
+  // These are the single source of truth for runtime color overrides:
+  // the "mooniatheme" module generates assets/css/custom-vars.css in the
+  // module directory which simply redefines these variables on :root.
+  --md-color-primary: #{$primary};
+  --md-color-accent: #{$accent};
+  --md-color-accent-hover: #{$accent-hover};
+  --md-color-accent-rgb: #{red($accent)}, #{green($accent)}, #{blue($accent)};
+  --md-color-danger: #{$danger};
+}

@@ -1,0 +1,9 @@
+// Lucide inline SVG icons (https://lucide.dev - ISC License).
+// Icons are rendered as inline <svg> elements via templates/_partials/icons/*.tpl
+// and stroke="currentColor", so they inherit text color automatically.
+.lucide {
+  display: inline-block;
+  flex-shrink: 0;
+  vertical-align: middle;
+  pointer-events: none;
+}

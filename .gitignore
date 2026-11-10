@@ -55,6 +55,9 @@ php_errors.log
 /npm-debug.log
 /yarn-error.log
 
+# --- Runtime-generated (BO color config) ---
+/modules/mooniatheme/views/css/custom-vars.css
+
 # --- OS / IDE ---
 .DS_Store
 Thumbs.db
