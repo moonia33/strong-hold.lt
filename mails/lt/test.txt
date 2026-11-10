@@ -1,0 +1,11 @@
+ 
+
+{shop_url}
+
+Sveiki, {firstname} {lastname},
+
+Tai yra testinis el. laiškas iš Jūsų parduotuvės.
+Jei skaitote tai, tuomet testinis bandymas buvo sėkmingas!
+
+[{shop_name}]({shop_url})
+Powered by [PrestaShop](https://www.prestashop-project.org/)

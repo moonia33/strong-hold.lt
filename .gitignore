@@ -1,0 +1,64 @@
+# --- Secrets / environment ---
+/app/config/parameters.php
+/app/config/parameters.yml
+/config/settings.inc.php
+/config/settings.old.php
+.env
+.env.local
+.env.*.local
+*.secret
+
+# --- Dependencies ---
+/vendor/
+node_modules/
+
+# --- Runtime / cache ---
+/var/*
+!/var/.htaccess
+!/var/index.php
+/cache/*
+!/cache/.htaccess
+!/cache/index.php
+/themes/*/cache/
+*.log
+error_log
+php_errors.log
+
+# --- User uploads & generated images ---
+/upload/*
+!/upload/.htaccess
+!/upload/index.php
+/download/*
+!/download/.htaccess
+!/download/index.php
+/img/tmp/
+/img/p/
+/img/c/
+/img/cms/
+/img/m/
+/img/su/
+/img/st/
+/img/scenes/
+/img/genders*
+/img/flags/
+/img/index.php
+
+# --- Back-office generated ---
+/admin*/autoupgrade/
+/admin*/backups/
+/admin*/import/
+/admin*/export/
+
+# --- Build artifacts ---
+/themes/*/src/css/*.map
+/themes/*/assets/**/*.map
+/npm-debug.log
+/yarn-error.log
+
+# --- OS / IDE ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*~

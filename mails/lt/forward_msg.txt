@@ -1,0 +1,14 @@
+ 
+
+{shop_url}
+
+Sveiki, {firstname} {lastname},
+
+Klientų aptarnavimas - Persiųsti pokalbiai
+
+{employee} norėjo persiųsti šį pokalbį jums.
+Pokalbio istorija: {messages}
+{employee} pridėjo {comment}
+
+[{shop_name}]({shop_url})
+Powered by [PrestaShop](https://www.prestashop-project.org/)

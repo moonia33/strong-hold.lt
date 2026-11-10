@@ -1,0 +1,15 @@
+ 
+
+{shop_url}
+
+Sveiki, {firstname} {lastname},
+
+Jūsų žinutė sėkmingai išsiųsta, dėkojame už Jūsų laiką!
+Užsakymo ID #:  {order_name}
+Prekė:  {product_name}
+Prisegtas failas: {attached_file}
+
+Atsakysime jums kaip įmanoma greičiau.
+
+[{shop_name}]({shop_url})
+Powered by [PrestaShop](https://www.prestashop-project.org/)

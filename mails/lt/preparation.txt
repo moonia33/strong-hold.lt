@@ -1,0 +1,16 @@
+ 
+
+{shop_url}
+
+Sveiki, {firstname} {lastname},
+
+Užsakymo ID {order_name} - Vykdymo eiliškumas
+
+Šiuo metu ruošiame Jūsų užsakymą {order_name} iš {shop_name}.
+
+Norėdami sekti savo užsakymą ir atsisiųsti sąskaitą, eikite į [Užsakymų istorija ir informacija]({history_url}) skiltį savo paskyroje.
+
+Jei pirkote su svečio paskyra, savo užsakymą galite sekti el. parduotuvės [Siuntinio sekimas]({guest_tracking_url}) skyriuje.
+
+[{shop_name}]({shop_url})
+Powered by [PrestaShop](https://www.prestashop-project.org/)

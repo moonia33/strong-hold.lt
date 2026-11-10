@@ -1,0 +1,14 @@
+ 
+
+{shop_url}
+
+Sveiki, {firstname} {lastname},
+
+Sumažėjo prekės "{product}" atsargos.
+
+Šiuo metu sandėlyje yra mažiau nei {last_qty} vienetai.
+Prekių likutis: {qty}
+Norėdami papildyti savo katalogą, administracinėje dalyje eikite į Katalogas > Atsargos skyrių ir valdykite atsargas.
+
+[{shop_name}]({shop_url})
+Powered by [PrestaShop](https://www.prestashop-project.org/)

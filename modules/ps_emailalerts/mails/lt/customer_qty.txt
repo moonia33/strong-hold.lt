@@ -1,0 +1,13 @@
+ 
+
+{shop_url}
+
+Sveiki,
+
+Prekę "{product}" jau galima užsakyti.
+
+Geros naujienos, šią prekę vėl turime prekyboje!
+Paspaudę šią nuorodą pateksite į prekės puslapį ir galėsite ją užsakyti: [{product}]({product_link})
+
+[{shop_name}]({shop_url})
+Powered by [PrestaShop](https://www.prestashop-project.org/)
