@@ -58,6 +58,7 @@ $component-name: ps-mainmenu;
 
           .#{$component-name}__tree-item-wrapper {
             margin-block: 0.375rem;
+            border: 1px solid var(--bs-border-color);
             border-radius: var(--bs-border-radius);
             transition: var(--bs-transition-default);
 

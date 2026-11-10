@@ -23,7 +23,7 @@
  * International Registered Trademark & Property of PrestaShop SA
  *}
 
-<div id="_desktop_ps_searchbar" class="order-2 ms-auto col-auto d-none d-md-flex align-items-center">
+<div id="_desktop_ps_searchbar" class="col-auto d-none d-md-flex align-items-center">
   <div id="ps_searchbar" class="ps-searchbar js-search-widget" data-search-controller-url="{$search_controller_url}">
     <form class="ps-searchbar__form" method="get" action="{$search_controller_url}" role="search">
       <input type="hidden" name="controller" value="search">

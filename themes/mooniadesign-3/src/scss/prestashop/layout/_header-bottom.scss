@@ -23,16 +23,27 @@ $component-name: header-main;
 
       @include media-breakpoint-up(md) {
         .logo {
-          max-width: 9rem;
+          max-width: 10rem;
         }
       }
     }
   }
 
-  // Search takes the free space between logo and account/cart icons
-  #_desktop_ps_searchbar {
-    flex: 1 1 auto;
-    max-width: 36rem;
+  // Order inside the main row: logo | search | cart | signin
+  @include media-breakpoint-up(md) {
+    #_desktop_ps_searchbar {
+      flex: 1 1 auto;
+      order: 1;
+      max-width: 36rem;
+    }
+
+    #_desktop_ps_shoppingcart {
+      order: 2;
+    }
+
+    #_desktop_ps_customersignin {
+      order: 3;
+    }
   }
 }
 
