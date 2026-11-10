@@ -1,40 +1,54 @@
-// @TODO: refacto
-$component-name: header-bottom;
+// Site header: logo column + right column (topbar over menu row),
+// following the reference layout (logo | links / menu | search | cart).
+$component-name: site-header;
 
 .#{$component-name} {
-  padding: 0.25rem 0;
+  position: relative;
+  z-index: 30;
+  padding-block-end: 0.5rem;
+  background-color: var(--bs-body-bg);
   border-bottom: 1px solid var(--bs-border-color);
 
   &__h1 {
     font-size: unset;
   }
 
-  .navbar-brand {
-    max-width: 250px;
-    max-height: max(50px, 10vh);
-    padding: 0;
+  &__logo {
+    padding-block: 0.5rem;
 
-    .logo {
-      width: auto;
-      max-width: 8rem;
-      max-height: 3rem;
-    }
+    .navbar-brand {
+      max-width: 250px;
+      max-height: max(50px, 10vh);
+      padding: 0;
 
-    @include media-breakpoint-up(md) {
       .logo {
-        max-width: 9rem;
+        width: auto;
+        max-width: 8rem;
+        max-height: 3rem;
+      }
+
+      @include media-breakpoint-up(md) {
+        .logo {
+          max-width: 9rem;
+        }
       }
     }
   }
 
-  .nav-link {
-    &:active,
-    &.active {
-      color: var(--bs-white);
-    }
+  &__main {
+    min-width: 0;
+  }
+}
 
-    &:active:hover {
-      color: var(--bs-white);
-    }
+// Menu row: main menu | search | cart
+.header-menu {
+  display: flex;
+  flex: 1;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: flex-end;
+
+  @include media-breakpoint-up(md) {
+    justify-content: flex-start;
   }
 }

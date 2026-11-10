@@ -1,8 +1,10 @@
-// @TODO: refacto
 $component-name: header-top;
 
 .#{$component-name} {
-  padding: 0.25rem 0;
+  align-items: center;
+  padding-block: 0.375rem;
+  font-size: 0.8125rem;
+  border-bottom: 1px solid var(--bs-border-color);
 
   &__right,
   &__left {
@@ -10,10 +12,6 @@ $component-name: header-top;
     flex-wrap: wrap;
     gap: 0.25rem;
     align-items: center;
-  }
-
-  &__right {
-    justify-content: flex-end;
   }
 
   a {
@@ -27,11 +25,9 @@ $component-name: header-top;
   }
 
   .form-select {
+    padding-block: 0.125rem;
+    font-size: inherit;
     cursor: pointer;
     border: none;
-  }
-
-  @include media-breakpoint-up(md) {
-    border-bottom: 1px solid var(--bs-border-color);
   }
 }

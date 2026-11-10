@@ -26,69 +26,62 @@
   {/if}
 {/function}
 
-{* GENERATE SUBMENU *}
+{* GENERATE SUBMENU - columned mega dropdown (all groups visible at once) *}
+{function name="desktopSubMenuGroup" node=null}
+  <div class="submenu__group">
+    <a
+      class="submenu__group-title"
+      href="{$node.url}"
+      {if $node.open_in_new_window}target="_blank" rel="noopener noreferrer"{/if}
+    >
+      {$node.label}
+    </a>
+
+    {if $node.children|count}
+      <ul class="submenu__list">
+        {foreach from=$node.children item=child}
+          <li class="submenu__item">
+            <a
+              class="submenu__link"
+              href="{$child.url}"
+              {if $child.open_in_new_window}target="_blank" rel="noopener noreferrer"{/if}
+            >
+              {$child.label}
+            </a>
+
+            {if $child.children|count}
+              <ul class="submenu__list submenu__list--nested">
+                {foreach from=$child.children item=grandchild}
+                  <li class="submenu__item">
+                    <a
+                      class="submenu__link submenu__link--nested"
+                      href="{$grandchild.url}"
+                      {if $grandchild.open_in_new_window}target="_blank" rel="noopener noreferrer"{/if}
+                    >
+                      {$grandchild.label}
+                    </a>
+                  </li>
+                {/foreach}
+              </ul>
+            {/if}
+          </li>
+        {/foreach}
+      </ul>
+    {/if}
+  </div>
+{/function}
+
 {function name="desktopSubMenu" nodes=[] depth=0 parent=null}
-  {if $nodes|count}
-    {if $depth === 1}
-      <div class="js-sub-menu submenu" role="menu" aria-label="{l s='%s submenu' sprintf=[$parent.label] d='Shop.Theme.Menu'}" id="submenu-{$parent.page_identifier}" data-ps-ref="desktop-submenu">
-        <div class="container">
-          <div class="submenu__row row gx-5">
-    {/if}
-
-    {if $depth === 1 }
-      <div class="submenu__left col-sm-3" role="tablist" aria-label="{l s='%s submenu tabs' sprintf=[$parent.label] d='Shop.Theme.Menu'}" data-ps-ref="desktop-submenu-left">
-        {foreach from=$nodes item=node}
-          <a
-            class="submenu__left-item"
-            href="{$node.url}"
-            data-depth="{$node.depth}"
-            aria-selected="{if $smarty.foreach.node.first}true{else}false{/if}"
-            tabindex="{if $smarty.foreach.node.first}0{else}-1{/if}"
-            data-ps-ref="desktop-submenu-left-item"
-            data-ps-has-child="{if $node.children|count}true{else}false{/if}"
-            {if $node.children|count}
-            role="tab"
-            id="tab_{$node.label|lower|classname}_{$node.depth}_{$node.page_identifier}"
-            data-open-tab="submenu_{$node.label|lower|classname}_{$node.depth}_{$node.page_identifier}"
-            aria-controls="submenu_{$node.label|lower|classname}_{$node.depth}_{$node.page_identifier}"
-            {/if}
-            {if $node.open_in_new_window}target="_blank" rel="noopener noreferrer"{/if}
-          >
-            {$node.label}
-          </a>
-        {/foreach}
-      </div>
-    {/if}
-
-    {if $depth === 1 }
-      <div class="submenu__right col-sm-9" data-ps-ref="desktop-submenu-right">
-        {foreach from=$nodes item=node}
-          <div 
-            class="submenu__right-items" 
-            role="tabpanel"
-            data-ps-ref="desktop-submenu-right-items"
-            {if $node.children|count}
-              id="submenu_{$node.label|lower|classname}_{$node.depth}_{$node.page_identifier}"
-              aria-labelledby="tab_{$node.label|lower|classname}_{$node.depth}_{$node.page_identifier}"
-            {/if}
-          >
-            {generateLinks links=$node.children parent=$parent}
-          </div>
-        {/foreach}
-      </div>
-    {/if}
-
-    {foreach from=$nodes item=node}
-      {if $node.children|count}
-        {desktopSubMenu nodes=$node.children depth=$node.depth parent=$node}
-      {/if}
-    {/foreach}
-
-    {if $depth === 1}
-          </div>
+  {if $nodes|count && $depth === 1}
+    <div class="js-sub-menu submenu" role="menu" aria-label="{l s='%s submenu' sprintf=[$parent.label] d='Shop.Theme.Menu'}" id="submenu-{$parent.page_identifier}" data-ps-ref="desktop-submenu">
+      <div class="container">
+        <div class="submenu__groups">
+          {foreach from=$nodes item=node}
+            {desktopSubMenuGroup node=$node}
+          {/foreach}
         </div>
       </div>
-    {/if}
+    </div>
   {/if}
 {/function}
 

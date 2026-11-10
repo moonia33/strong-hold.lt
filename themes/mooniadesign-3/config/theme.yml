@@ -62,7 +62,6 @@ global_settings:
         - ps_languageselector
         - ps_currencyselector
         - ps_customersignin
-        - ps_shoppingcart
         # Keep existing hooks and append them after
         - ~
       displayNavFullWidth:
@@ -72,6 +71,7 @@ global_settings:
       displayTop:
         - ps_mainmenu
         - ps_searchbar
+        - ps_shoppingcart
         # Keep existing hooks and append them after
         - ~
       displayHome:
