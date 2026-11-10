@@ -181,24 +181,11 @@
   {/if}
 {/function}
 
-<div class="ps-mainmenu ps-mainmenu--desktop col-xl col-auto">
+<div class="ps-mainmenu ps-mainmenu--desktop col-auto">
   {* DESKTOP MENU *}
   <nav class="ps-mainmenu__desktop d-none d-xl-block position-static js-menu-desktop" data-ps-ref="desktop-menu-container" aria-label="{l s='Main navigation' d='Shop.Theme.Menu'}">
     {desktopMenu nodes=$menu.children}
   </nav>
-
-  {* MOBILE MENU *}
-  <div class="ps-mainmenu__mobile-toggle">
-    <button
-      class="menu-toggle btn btn-link"
-      data-bs-toggle="offcanvas"
-      data-bs-target="#mobileMenu"
-      aria-controls="mobileMenu"
-      aria-label="{l s='Open mobile menu' d='Shop.Theme.Menu'}"
-    >
-      {include file="_partials/icons/menu.tpl"}
-    </button>
-  </div>
 </div>
 
 <div
