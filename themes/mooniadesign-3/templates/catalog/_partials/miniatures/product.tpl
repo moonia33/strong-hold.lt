@@ -66,6 +66,23 @@
                     </div>
                   {/if}
                 {/block}
+
+                {block name='product_price_tax_exc'}
+                  {if !empty($product.price_tax_exc)}
+                    <div class="{$componentName}__price-tax-exc">
+                      ({$product.price_tax_exc|string_format:"%.2f"} {$currency.sign} {l s='Be PVM' d='Shop.Theme.Catalog'})
+                    </div>
+                  {/if}
+                {/block}
+
+                {block name='product_availability'}
+                  {if $product.show_availability && $product.availability_message}
+                    <div class="{$componentName}__availability {$componentName}__availability--{$product.availability}">
+                      {include file="_partials/icons/truck.tpl" size=16}
+                      <span>{$product.availability_message}</span>
+                    </div>
+                  {/if}
+                {/block}
               </div>
             {/if}
 
@@ -85,7 +102,7 @@
                   {if !empty($product.features)}
                     {foreach from=$product.features item=feature name=features}
                       {if $smarty.foreach.features.iteration > 4}{break}{/if}
-                      <span class="{$componentName}__chip" title="{$feature.name}: {$feature.value}">{$feature.value}</span>
+                      <span class="{$componentName}__chip" title="{$feature.name}: {$feature.value}"><strong>{$feature.name}:</strong> {$feature.value}</span>
                     {/foreach}
                   {/if}
                 </div>

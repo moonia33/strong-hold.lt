@@ -83,6 +83,9 @@ const MASK_ICONS = ['chevron-up', 'chevron-down', 'chevron-left', 'chevron-right
 // Extra icons used only from JS (alert types, password visibility toggle)
 const JS_ONLY = ['eye-off', 'triangle-alert', 'circle-x', 'circle-check', 'info', 'check', 'x', 'plus', 'minus'];
 
+// Extra icons used only in templates (not mapped from Material Icons)
+const TPL_ONLY = ['truck'];
+
 const tplHeader = (name) => `{**
  * Lucide icon "${name}" (https://lucide.dev - ISC License)
  * Usage: {include file="_partials/icons/${name}.tpl" size=20 class="extra-class"}
@@ -107,7 +110,7 @@ const encodeDataUri = (svg) => `url("data:image/svg+xml,${svg
   .replace(/\s+/g, ' ')}")`;
 
 const names = [...new Set([...Object.values(MATERIAL_MAP), ...JS_ONLY])];
-const tplIcons = [...new Set(Object.values(MATERIAL_MAP))];
+const tplIcons = [...new Set([...Object.values(MATERIAL_MAP), ...TPL_ONLY])];
 
 // 1. Smarty partials
 const iconsDir = resolve(themeRoot, 'templates/_partials/icons');
