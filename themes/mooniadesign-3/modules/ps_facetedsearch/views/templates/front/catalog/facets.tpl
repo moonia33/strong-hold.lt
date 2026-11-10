@@ -42,7 +42,8 @@
 
     <div class="accordion accordion-flush accordion--small">
       {foreach from=$displayedFacets item="facet" name="facets"}
-        <section class="accordion-item" data-type="{$facet.type}" data-name="{$facet.label}">
+        {if $facet.type != "category"}
+        <section class="facet" data-type="{$facet.type}" data-name="{$facet.label}">
           {assign var=_expand_id value=10|mt_rand:100000}
           {assign var=_collapse value=true}
 
@@ -50,25 +51,26 @@
             {if $filter.active}{assign var=_collapse value=false}{/if}
           {/foreach}
 
-          <button
-            class="accordion-button {if $_collapse} collapsed{/if}"
-            type="button"
-            data-bs-target="#facet_{$_expand_id}"
-            data-bs-toggle="collapse"
-            aria-expanded="{if !$_collapse}true{else}false{/if}"
-          >
-            {$facet.label}
-          </button>
+          <p class="facet__title">{$facet.label}</p>
 
-          <div id="facet_{$_expand_id}" class="accordion-collapse collapse{if !$_collapse} show{/if}">
+          <div class="facet__body">
             {if in_array($facet.widgetType, ['radio', 'checkbox'])}
               {block name='facet_item_other'}
-                <ul class="accordion-body">
+                {assign var=_shown value=0}
+                <ul class="accordion-body facet__list">
                   {foreach from=$facet.filters key=filter_key item="filter"}
                     {assign var="isColorOrTexture" value=(isset($filter.properties.color) || isset($filter.properties.texture))}
 
                     {if !$filter.displayed}
                       {continue}
+                    {/if}
+
+                    {assign var=_shown value=$_shown+1}
+
+                    {if $_shown == 7}
+                      </ul>
+                      <input type="checkbox" class="facet__expand-toggle" id="facet_expand_{$_expand_id}" aria-hidden="true">
+                      <ul class="accordion-body facet__list facet__extra">
                     {/if}
 
                     <li>
@@ -173,6 +175,13 @@
                     </li>
                   {/foreach}
                 </ul>
+                {if $_shown > 6}
+                  <label class="facet__showall" for="facet_expand_{$_expand_id}" role="button">
+                    <span class="facet__showall-more">{l s='Rodyti visus' d='Shop.Theme.Catalog'} ({$_shown})</span>
+                    <span class="facet__showall-less">{l s='Rodyti mažiau' d='Shop.Theme.Catalog'}</span>
+                    {include file="_partials/icons/chevron-down.tpl" size=14}
+                  </label>
+                {/if}
               {/block}
             {elseif $facet.widgetType == 'dropdown'}
               {block name='facet_item_dropdown'}
@@ -259,6 +268,7 @@
             {/if}
           </div>
         </section>
+        {/if}
       {/foreach}
     </div>
   </div>

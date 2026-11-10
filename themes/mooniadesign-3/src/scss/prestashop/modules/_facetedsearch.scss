@@ -8,24 +8,87 @@ $component-name: (
   border-bottom: 0;
 
   // AliStyle: each facet group as a bordered block (consistent with product cards)
-  .accordion-item {
+  .facet {
     margin-block-end: 0.75rem;
     overflow: hidden;
     background-color: #fff;
     border: 1px solid var(--bs-border-color);
     border-radius: var(--bs-border-radius);
 
-    .accordion-button {
+    &__title {
+      padding: 0.75rem 1rem;
+      margin: 0;
       font-size: 0.875rem;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.04em;
-      background-color: #fff;
-      box-shadow: none;
+      border-bottom: 1px solid var(--bs-border-color);
+    }
 
-      &:not(.collapsed) {
-        color: var(--bs-body-color);
-        border-bottom: 1px solid var(--bs-border-color);
+    &__body {
+      padding: 0.625rem 1rem 0.875rem;
+    }
+
+    &__list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    &__extra {
+      display: none;
+      padding: 0;
+    }
+
+    &__expand-toggle {
+      position: absolute;
+      pointer-events: none;
+      opacity: 0;
+
+      &:checked {
+        ~ .facet__extra {
+          display: block;
+        }
+
+        ~ .facet__showall {
+          .facet__showall-more {
+            display: none;
+          }
+
+          .facet__showall-less {
+            display: inline;
+          }
+
+          .lucide {
+            transform: rotate(180deg);
+          }
+        }
+      }
+    }
+
+    &__showall {
+      display: inline-flex;
+      gap: 0.25rem;
+      align-items: center;
+      padding: 0.25rem 0;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--bs-link-color);
+      cursor: pointer;
+
+      &:hover {
+        color: var(--bs-link-hover-color);
+      }
+
+      .facet__showall-less {
+        display: none;
+      }
+
+      .lucide {
+        transition: transform 0.2s ease;
       }
     }
 
