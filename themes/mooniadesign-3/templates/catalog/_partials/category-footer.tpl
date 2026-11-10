@@ -10,6 +10,8 @@
           {$category.additional_description nofilter}
         </div>
       {/if}
+
+      {hook h='displayCategoryFaq' category=$category}
     </div>
   {/if}
 </div>

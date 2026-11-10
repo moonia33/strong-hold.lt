@@ -42,8 +42,6 @@
           </label>
         </div>
         {/if}
-
-        {hook h='displayCategoryFaq' category=$category}
       </div>
 
       {if isset($subcategories) && $subcategories|@count > 0}
