@@ -69,6 +69,17 @@
               </div>
             {/if}
 
+            {block name='product_chips'}
+              {if !empty($product.features)}
+                <div class="{$componentName}__chips">
+                  {foreach from=$product.features item=feature name=features}
+                    {if $smarty.foreach.features.iteration > 4}{break}{/if}
+                    <span class="{$componentName}__chip" title="{$feature.name}: {$feature.value}">{$feature.value}</span>
+                  {/foreach}
+                </div>
+              {/if}
+            {/block}
+
             {block name='product_reviews'}
               {hook h='displayProductListReviews' product=$product}
             {/block}
