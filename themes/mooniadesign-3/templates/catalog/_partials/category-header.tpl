@@ -5,12 +5,6 @@
 <div id="js-product-list-header">
   {if $listing.pagination.items_shown_from == 1}
     <div class="category__header">
-      {include file='components/page-title-section.tpl' title=$category.name}
-
-      {if $category.description}
-        <div class="category__description rich-text">{$category.description nofilter}</div>
-      {/if}
-
       {if !empty($category.cover.bySize.category_cover.url)}
         <div class="category__cover">
           <picture>
@@ -31,6 +25,20 @@
               fetchpriority="high"
             >
           </picture>
+        </div>
+      {/if}
+
+      {include file='components/page-title-section.tpl' title=$category.name}
+
+      {if $category.description}
+        <div class="category__description-wrapper">
+          <input type="checkbox" class="category__description-toggle" id="category-description-toggle" aria-hidden="true">
+          <div class="category__description rich-text" id="category-description">{$category.description nofilter}</div>
+          <label class="category__description-more" for="category-description-toggle" role="button">
+            <span class="category__description-more-label">{l s='Read more' d='Shop.Theme.Catalog'}</span>
+            <span class="category__description-less">{l s='Read less' d='Shop.Theme.Catalog'}</span>
+            {include file="_partials/icons/chevron-down.tpl" size=16}
+          </label>
         </div>
       {/if}
 
