@@ -57,7 +57,7 @@
   justify-content: center;
 }
 
-// Reference card v2: plain text chips (no boxes), larger title & price
+// Reference card v2: larger title & price; chips stay as muted pills
 .product-miniature {
   &__title {
     font-size: 1.125rem;
@@ -75,18 +75,7 @@
 }
 
 .product-miniature__chip {
-  padding: 0;
-  font-size: 0.8125rem;
-  color: var(--bs-body-color);
-  background: none;
-  border-radius: 0;
-
   strong {
     font-weight: 600;
   }
-}
-
-.product-miniature__chip--attribute {
-  color: var(--bs-body-color);
-  background: none;
 }
