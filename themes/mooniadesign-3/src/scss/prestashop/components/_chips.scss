@@ -19,3 +19,9 @@
   background-color: var(--bs-tertiary-bg);
   border-radius: 0.25rem;
 }
+
+// Attribute chips (combinations) — subtle accent tint vs. neutral features
+.product-miniature__chip--attribute {
+  color: var(--md-color-accent);
+  background-color: rgba(var(--md-color-accent-rgb), 0.08);
+}
