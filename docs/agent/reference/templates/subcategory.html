@@ -1,0 +1,185 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y">
+<div class="container">
+
+
+<!-- ============================  FILTER TOP  ================================= -->
+<div class="card mb-3">
+	<div class="card-body">
+<div class="row">
+	<div class="col-md-2"> Your are here: </div> <!-- col.// -->
+	<nav class="col-md-8"> 
+	<ol class="breadcrumb">
+	    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+	    <li class="breadcrumb-item"><a href="{% url 'category' subcategory.category.slug %}">{{ subcategory.category.title }}</a></li>
+	    <li class="breadcrumb-item"><a>{{ subcategory.title }}</a></li>
+	</ol>  
+	</nav> <!-- col.// -->
+</div> <!-- row.// -->
+<hr>
+<div class="row">
+	<div class="col-md-2">Filter by</div> <!-- col.// -->
+	<form class="col-md-10" method="get">
+    <ul class="list-inline">
+        <li class="list-inline-item mr-3 dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Country</a>
+            <div class="dropdown-menu p-3">
+                {% for country in countries %}
+                    <label class="form-check">
+                        <input type="checkbox" class="form-check-input" name="country" value="{{ country }}"
+                               {% if country in filter_countries %}checked{% endif %}>
+                        {{ country }}
+                    </label>
+                {% endfor %}
+            </div>
+        </li>
+
+        <li class="list-inline-item mr-3 dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Brand</a>
+            <div class="dropdown-menu p-3">
+                {% for brand in brands %}
+                    <label class="form-check">
+                        <input type="checkbox" class="form-check-input" name="brand" value="{{ brand }}"
+                               {% if brand in filter_brands %}checked{% endif %}>
+                        {{ brand }}
+                    </label>
+                {% endfor %}
+            </div>
+        </li>
+
+        <li class="list-inline-item mr-3">
+            <div class="form-inline">
+                <label class="mr-2">Price</label>
+                <input class="form-control form-control-sm" name="min_price" {% if min_price %} value="{{ min_price }}" {% endif %} placeholder="Min" type="number" >
+                <span class="px-2"> - </span>
+                <input class="form-control form-control-sm" name="max_price" {% if min_price %} value="{{ min_price }}" {% endif %} placeholder="Max" type="number" value="{{ max_price }}">
+                <button type="submit" class="btn btn-sm btn-light ml-2">Ok</button>
+            </div>
+        </li>
+    </ul>
+</form> <!-- col.// -->
+</div> <!-- row.// -->
+	</div> <!-- card-body .// -->
+</div> <!-- card.// -->
+<!-- ============================ FILTER TOP END.// ================================= -->
+
+<header class="mb-3">
+		<div class="form-inline">
+			<strong class="mr-md-auto"></strong>
+			<select class="mr-2 form-control">
+				<option>Latest items</option>
+				<option>Trending</option>
+				<option>Most Popular</option>
+				<option>Cheapest</option>
+			</select>
+			<div class="btn-group">
+				<a href="{% url 'sub-category' subcategory.category.slug subcategory.slug %}?view=large" class="btn btn-light active" data-toggle="tooltip" title="List view">
+					<i class="fa fa-bars"></i></a>
+				<a href="{% url 'sub-category' subcategory.category.slug subcategory.slug %}?view=grid" class="btn btn-light" data-toggle="tooltip" title="Grid view">
+					<i class="fa fa-th"></i></a>
+			</div>
+		</div>
+</header><!-- sect-heading -->
+
+<div class="row">
+	{% for product in products %}
+	<div class="col-md-3">
+		<figure class="card card-product-grid">
+			<div class="img-wrap"> 
+				<span class="badge badge-danger"> NEW </span>
+				<img src="{{ product.images.first.image.url }}">
+
+
+			</div> <!-- img-wrap.// -->
+			<figcaption class="info-wrap">
+					<a href="{% url 'product' product.slug %}" class="title mb-2">{{ product.name }}</a>
+					<div class="price-wrap">
+						<span class="price">{{ product.price }} so'm</span>
+						<small class="text-muted">/donasiga</small>
+					</div> <!-- price-wrap.// -->
+					
+					<p class="mb-2"> 1 Dona  <small class="text-muted">(Min Order)</small></p>
+					
+					<p class="text-muted ">{{ product.brand}}</p>
+				   
+					<hr>
+					
+					<p class="mb-3">
+						<span class="tag"> {{ product.guarantee }} </span>
+						<span class="tag"> {{ product.review_set.count }} </span>
+						<span class="tag"> {{ product.country }} </span>
+					</p>
+				
+					<label class="custom-control mb-3 custom-checkbox">
+					  <input type="checkbox" class="custom-control-input">
+					</label>
+
+					<a href="{% url 'add-to-cart' product.id %}" class="btn btn-outline-primary"> <i class="fa fa-cart-plus"></i> Add To Cart </a>
+					
+			</figcaption>
+		</figure>
+	</div>
+	{% endfor %}<!-- col.// -->
+</div> <!-- row end.// -->
+
+
+<nav class="mb-4" aria-label="Page navigation sample">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="{% url 'sub-category' subcategory.category.slug subcategory.slug %}?page={{ pr_page }}">Previous</a></li>
+	  {% for p in pages %}
+    <li class="page-item {% if p == page %} active {% endif %}"><a class="page-link" href="{% url 'sub-category' subcategory.category.slug subcategory.slug%}?page={{ forloop.counter }}">{{ forloop.counter }}</a></li>
+	  {% endfor %}
+    <li class="page-item"><a class="page-link" href="{% url 'sub-category' subcategory.category.slug subcategory.slug %}?page={{ nt_page }}">Next</a></li>
+  </ul>
+</nav>
+
+
+<div class="box text-center">
+	<p>Did you find what you were looking for？</p>
+	<a href="" class="btn btn-light">Yes</a>
+	<a href="" class="btn btn-light">No</a>
+</div>
+
+</div> <!-- container .//  -->
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+
+
+
+<!-- ========================= SECTION SUBSCRIBE  ========================= -->
+<section class="padding-y-lg bg-light border-top">
+<div class="container">
+
+<p class="pb-2 text-center">Delivering the latest product trends and industry news straight to your inbox</p>
+
+<div class="row justify-content-md-center">
+	<div class="col-lg-4 col-sm-6">
+<form class="form-row">
+		<div class="col-8">
+		<input class="form-control" placeholder="Your Email" type="email">
+		</div> <!-- col.// -->
+		<div class="col-4">
+		<button type="submit" class="btn btn-block btn-warning"> <i class="fa fa-envelope"></i> Subscribe </button>
+		</div> <!-- col.// -->
+</form>
+<small class="form-text">We’ll never share your email address with a third-party. </small>
+	</div> <!-- col-md-6.// -->
+</div>
+	
+
+</div>
+</section>
+<!-- ========================= SECTION SUBSCRIBE END// ========================= -->
+
+
+
+
+
+
+
+{% endblock %}

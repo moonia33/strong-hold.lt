@@ -1,0 +1,260 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+<!-- ========================= SECTION MAIN  ========================= -->
+<section class="section-main padding-y">
+<main class="card">
+	<div class="card-body">
+
+<div class="row">
+	<aside class="col-lg col-md-3 flex-lg-grow-0">
+		<nav class="nav-home-aside">
+			<h6 class="title-category">All categories <i class="d-md-none icon fa fa-chevron-down"></i></h6>
+			<ul class="menu-category">
+				{% for category in categories|slice:":8" %}
+				<li><a href="{% url 'category' category.slug %}">{{ category.title }}</a></li>
+				{% endfor %}
+				{% if categories.count > 8 %}
+				<li class="has-submenu"><a href="#">More items</a>
+					<ul class="submenu">
+						{% for category in categories %}
+						<li><a href="#">{{ category.title }}</a></li>
+						{% endfor %}
+					</ul>
+				</li>
+				{% endif %}
+			</ul>
+		</nav>
+	</aside> <!-- col.// -->
+	<div class="col-md-9 col-xl-7 col-lg-7">
+
+<!-- ================== COMPONENT SLIDER  BOOTSTRAP  ==================  -->
+<div id="carousel1_indicator" class="slider-home-banner carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carousel1_indicator" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel1_indicator" data-slide-to="1"></li>
+    <li data-target="#carousel1_indicator" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+	  {% for banner in banners %}
+    <div class="carousel-item {% if forloop.counter == 1 %} active {% endif %} ">
+      <img src="{{ banner.image.url }}" alt="First slide">
+    </div>
+	  {% endfor %}
+  </div>
+  <a class="carousel-control-prev" href="#carousel1_indicator" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carousel1_indicator" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div> 
+<!-- ==================  COMPONENT SLIDER BOOTSTRAP end.// ==================  .// -->	
+
+	</div> <!-- col.// -->
+	<div class="col-md d-none d-lg-block flex-grow-1">
+		<aside class="special-home-right">
+			<h6 class="bg-blue text-center text-white mb-0 p-2">Popular category</h6>
+			{% for category in categories %}
+			<div class="card-banner border-bottom">
+			  <div class="py-3" style="width:80%">
+			    <h6 class="card-title">{{ category.title }}</h6>
+			    <a href="{% url 'category' category.slug %}" class="btn btn-secondary btn-sm" aria-disabled="true"> Source now </a>
+			  </div>
+			  <img src="{{ category.image.url }}" height="80" class="img-bg">
+			</div>
+			{% endfor %}
+
+		</aside>
+	</div> <!-- col.// -->
+</div> <!-- row.// -->
+
+	</div> <!-- card-body.// -->
+</main> <!-- card.// -->
+
+</section>
+<!-- ========================= SECTION MAIN END// ========================= -->
+
+
+
+<!-- =============== SECTION DEAL =============== -->
+<section class="padding-bottom">
+ <div class="card card-deal">
+     <div class="col-heading content-body">
+      <header class="section-heading">
+       <h3 class="section-title">Aksiya va chegirmalar</h3>
+
+     </header><!-- sect-heading -->
+<div class="timer" id="deal-timer">
+  <div><span class="num" id="days">04</span> <small>Kun</small></div>
+  <div><span class="num" id="hours">12</span> <small>Soat</small></div>
+  <div><span class="num" id="minutes">58</span> <small>Minut</small></div>
+  <div><span class="num" id="seconds">02</span> <small>Sekund</small></div>
+</div>
+
+		 {% for category in categories %}
+   </div> <!-- col.// -->
+   <div class="row no-gutters items-wrap">
+    <div class="col-md col-6">
+     <figure class="card-product-grid card-sm">
+      <a href="#" class="img-wrap"> 
+       <img src="{{ category.image.url }}">
+      </a>
+      <div class="text-wrap p-3">
+       	<a href="{% url 'category' category.slug %}" class="title">{{ category.title }}</a>
+      </div>
+   </figure>
+ </div> <!-- col.// -->
+	   {% endfor %}
+
+</div>
+</div>
+
+</section>
+<!-- =============== SECTION DEAL // END =============== -->
+
+<!-- =============== SECTION 1 =============== -->
+
+
+<!-- =============== SECTION 2 =============== -->
+<section class="padding-bottom">
+
+
+<div class="card card-home-category">
+<div class="row no-gutters">
+	<div class="col-md-3">
+
+	<div class="home-category-banner bg-light-orange">
+		<h5 class="title">Zamonaviy ishlab chiqaruvchilar uchun uskunalar</h5>
+		<p>Ishlab chiqarish samaradorligini oshiruvchi, ishonchli va bardoshli sanoat uskunalari bilan tanishing. Har qanday korxona ehtiyojlari uchun zamonaviy yechimlar. </p>
+
+		<img src="images/items/14.jpg" class="img-bg">
+	</div>
+
+	</div> <!-- col.// -->
+	<div class="col-md-9">
+
+<ul class="row no-gutters bordered-cols">
+			{% for product in products %}
+	<li class="col-6 col-lg-3 col-md-4">
+<a href="{% url 'product' product.slug %}" class="item">
+	<div class="card-body">
+		<h6 class="title">{{ product.name }}  </h6>
+		<img class="img-sm float-right" src="{{ product.images.all.0.image.url }}">
+		<p class="text-muted"><i class="fa fa-map-marker-alt"></i> {{ product.country }}</p>
+	</div>
+</a>
+	</li>
+			{% endfor %}
+</ul>
+	</div> <!-- col.// -->
+</div> <!-- row.// -->
+</div> <!-- card.// -->
+</section>
+<!-- =============== SECTION 2 END =============== -->
+
+
+
+<!-- =============== SECTION REQUEST =============== -->
+
+<section class="padding-bottom">
+
+
+
+
+
+
+</section>
+
+<!-- =============== SECTION REQUEST .//END =============== -->
+
+
+<!-- =============== SECTION ITEMS =============== -->
+<section  class="padding-bottom-sm">
+
+
+
+</section>
+<!-- =============== SECTION ITEMS .//END =============== -->
+
+
+<!-- =============== SECTION SERVICES =============== -->
+<section  class="padding-bottom">
+
+
+
+
+</section>
+<!-- =============== SECTION SERVICES .//END =============== -->
+
+<!-- =============== SECTION REGION =============== -->
+
+<!-- =============== SECTION REGION .//END =============== -->
+
+
+</div>
+<!-- container end.// -->
+
+<!-- ========================= SECTION SUBSCRIBE  ========================= -->
+<section class="section-subscribe padding-y-lg">
+<div class="container">
+
+
+
+<div class="row justify-content-md-center">
+	<div class="col-lg-5 col-md-6">
+
+
+	</div> <!-- col-md-6.// -->
+</div>
+
+
+</div>
+</section>
+<!-- ========================= SECTION SUBSCRIBE END// ========================= -->
+
+
+
+
+
+<script>
+  // Tugash vaqti (misol: hozirgi vaqtdan 4 kun, 12 soat, 58 daqiqa, 2 sekund keyin)
+  const endTime = new Date();
+  endTime.setDate(endTime.getDate() + 4);
+  endTime.setHours(endTime.getHours() + 12);
+  endTime.setMinutes(endTime.getMinutes() + 58);
+  endTime.setSeconds(endTime.getSeconds() + 2);
+
+  function updateTimer() {
+    const now = new Date();
+    const timeLeft = endTime - now;
+
+    if (timeLeft <= 0) {
+      document.getElementById('days').textContent = "00";
+      document.getElementById('hours').textContent = "00";
+      document.getElementById('minutes').textContent = "00";
+      document.getElementById('seconds').textContent = "00";
+      return;
+    }
+
+    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeLeft / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((timeLeft / (1000 * 60)) % 60);
+    const seconds = Math.floor((timeLeft / 1000) % 60);
+
+    document.getElementById('days').textContent = days.toString().padStart(2, '0');
+    document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+    document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+    document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+  }
+
+  setInterval(updateTimer, 1000);  // Har sekundda yangilansin
+  updateTimer(); // Dastlab darhol ishga tushsin
+</script>
+
+{% endblock %}
