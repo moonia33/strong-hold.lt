@@ -76,7 +76,8 @@
                 {/block}
 
                 {block name='product_availability'}
-                  {if $product.show_availability && $product.availability_message}
+                  {* availability reflects the default combination; hide "out of stock" when any variant is still available *}
+                  {if $product.show_availability && $product.availability_message && !($product.availability == 'unavailable' && $product.quantity_all_versions > 0)}
                     <div class="{$componentName}__availability {$componentName}__availability--{$product.availability}">
                       {include file="_partials/icons/truck.tpl" size=16}
                       <span>{$product.availability_message}</span>
@@ -87,22 +88,14 @@
             {/if}
 
             {block name='product_chips'}
-              {if !empty($product.features) || !empty($product.attributes)}
+              {if !empty($product.attributes)}
                 <div class="{$componentName}__chips">
-                  {if !empty($product.attributes)}
-                    {if is_string($product.attributes)}
-                      <span class="{$componentName}__chip {$componentName}__chip--attribute" title="{$product.attributes}">{$product.attributes}</span>
-                    {else}
-                      {foreach from=$product.attributes item=attr name=attrs}
-                        {if $smarty.foreach.attrs.iteration > 2}{break}{/if}
-                        <span class="{$componentName}__chip {$componentName}__chip--attribute" title="{if isset($attr.name)}{$attr.name}{else}{$attr}{/if}">{if isset($attr.name)}{$attr.name}{else}{$attr}{/if}</span>
-                      {/foreach}
-                    {/if}
-                  {/if}
-                  {if !empty($product.features)}
-                    {foreach from=$product.features item=feature name=features}
-                      {if $smarty.foreach.features.iteration > 4}{break}{/if}
-                      <span class="{$componentName}__chip" title="{$feature.name}: {$feature.value}"><strong>{$feature.name}:</strong> {$feature.value}</span>
+                  {if is_string($product.attributes)}
+                    <span class="{$componentName}__chip {$componentName}__chip--attribute" title="{$product.attributes}">{$product.attributes}</span>
+                  {else}
+                    {foreach from=$product.attributes item=attr name=attrs}
+                      {if $smarty.foreach.attrs.iteration > 4}{break}{/if}
+                      <span class="{$componentName}__chip {$componentName}__chip--attribute" title="{if isset($attr.name)}{$attr.name}{else}{$attr}{/if}">{if isset($attr.name)}{$attr.name}{else}{$attr}{/if}</span>
                     {/foreach}
                   {/if}
                 </div>
